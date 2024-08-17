@@ -656,5 +656,23 @@ const products = [
       "apparel",
       "mens"
     ]
+  }, {
+    id : "id1",
+    image : "images/products/backpack.jpg",
+    name : "2L Black Elegant Backpack", 
+    rating : {
+      stars : 3,
+      count : 2124
+    },
+    priceCents : 2341
+  }, {
+    id : "id2",
+    image : "images/products/umbrella.jpg",
+    name : "Simple Green Umbrella with Quality Polyster", 
+    rating : {
+      stars : 5,
+      count : 41
+    }, 
+    priceCents : 212
   }
 ];
