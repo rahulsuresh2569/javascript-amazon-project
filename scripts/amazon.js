@@ -1,3 +1,7 @@
+import {cart , addToCart} from '../data/cart.js'
+import { products } from '../data/products.js'
+
+
 let productsHTML = ''
 products.forEach((product) => {
   productsHTML += `
@@ -54,43 +58,41 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML
 
-let addedTimeoutId;
+
+function updateCartQuantity() {
+  let cartQuantity=0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity
+  })
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+}
+
+function addAddedElement(productId) {
+  let addedTimeoutId;
+  const addedElement = document.querySelector(`.js-added-to-cart-${productId}`)
+  addedElement.classList.add('added-to-cart-after')
+  clearTimeout(addedTimeoutId)
+  addedTimeoutId = setTimeout(() => {
+    addedElement.classList.remove('added-to-cart-after')
+  },2000)
+}
+
+
 document.querySelectorAll('.js-add-to-cart-button')
   .forEach((button) => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId
+
       let productQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value) 
 
-      let matchingItem;
-      cart.forEach((item) => {
-        if (item.productId === productId) {
-          matchingItem = item
-        }
-      })
+      //Add to cart
+      addToCart(productId,productQuantity)
       
-      if (matchingItem) {
-        matchingItem.quantity += productQuantity
-      } else {
-        cart.push({
-          productId : productId,
-          quantity : productQuantity
-        })
-      } 
-
       //Interactive Cart Quantity
-      let cartQuantity=0;
-      cart.forEach((item) => {
-        cartQuantity += item.quantity
-      })
-      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+      updateCartQuantity()
       
       //Disapperating added message after adding
-      const addedElement = document.querySelector(`.js-added-to-cart-${productId}`)
-      addedElement.classList.add('added-to-cart-after')
-      clearTimeout(addedTimeoutId)
-      addedTimeoutId = setTimeout(() => {
-        addedElement.classList.remove('added-to-cart-after')
-      },2000) 
+       addAddedElement(productId)
       
     })
   })
