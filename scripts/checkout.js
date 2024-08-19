@@ -50,6 +50,7 @@ cart.forEach((cartItem) => {
             Delete
           </span>
         </div>
+        <span class = "validation-text js-validation-text-${matchingItem.id}"></span>
       </div>
 
       <div class="delivery-options">
@@ -145,9 +146,16 @@ document.querySelectorAll('.js-save-quantity-link')
       document.querySelector(`.js-cart-container-${productId}`).classList.remove('is-editing-quantity')
       
       const newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
-      updateQuantity(productId, newQuantity)
-      document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
-      updateCartQuantity()
+
+      if (newQuantity>=0 && newQuantity < 1000) {
+        document.querySelector(`.js-validation-text-${productId}`).innerHTML = ""
+        updateQuantity(productId, newQuantity)
+        document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
+        updateCartQuantity()
+      } else {
+        document.querySelector(`.js-validation-text-${productId}`).innerHTML = "Enter a valid quantity"
+      }
+
     })
   })
 

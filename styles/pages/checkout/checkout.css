@@ -226,3 +226,8 @@
   .is-editing-quantity .quantity-label{
   display: none;
 }
+
+.validation-text {
+  color: red;
+  font-size: 13px;
+}
