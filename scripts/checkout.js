@@ -135,28 +135,37 @@ document.querySelectorAll('.js-update-quantity-link')
           inputBoxQuantity = cartItem.quantity
         }
       })
-      document.querySelector(`.js-quantity-input-${productId}`).value = inputBoxQuantity
+      const quantityInputElement = document.querySelector(`.js-quantity-input-${productId}`) 
+      quantityInputElement.value = inputBoxQuantity
+
+      quantityInputElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          saveNewQuantity(updateLink)
+        }
+      })
     })
   })
 
 document.querySelectorAll('.js-save-quantity-link')
   .forEach((saveLink) => {
     saveLink.addEventListener('click', () => {
-      const productId = saveLink.dataset.productId
-      document.querySelector(`.js-cart-container-${productId}`).classList.remove('is-editing-quantity')
-      
-      const newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
-
-      if (newQuantity>=0 && newQuantity < 1000) {
-        document.querySelector(`.js-validation-text-${productId}`).innerHTML = ""
-        updateQuantity(productId, newQuantity)
-        document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
-        updateCartQuantity()
-      } else {
-        document.querySelector(`.js-validation-text-${productId}`).innerHTML = "Enter a valid quantity"
-      }
-
+      saveNewQuantity(saveLink)
     })
   })
+  
+function saveNewQuantity(saveLink) {
+  const productId = saveLink.dataset.productId
+  document.querySelector(`.js-cart-container-${productId}`).classList.remove('is-editing-quantity')
+  const newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
+  
+  if (newQuantity>=0 && newQuantity < 1000) {
+    document.querySelector(`.js-validation-text-${productId}`).innerHTML = ""
+    updateQuantity(productId, newQuantity)
+    document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
+    updateCartQuantity()
+  } else {
+    document.querySelector(`.js-validation-text-${productId}`).innerHTML = "Enter a valid quantity"
+  }
+}
 
   updateCartQuantity()
