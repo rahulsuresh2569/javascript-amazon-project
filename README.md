@@ -2,13 +2,19 @@
 
 This project is a simplified clone of the Amazon e-commerce website, built as my first project after learning the fundamentals of JavaScript. It was created as part of the JavaScript course by **SuperSimpleDev** on YouTube.
 
+## Demo
+
+![Demo](resources/demo.gif)
+
+## Screenshots
+
+<img src="resources/ss-1.jpg" alt="Homepage Screenshot" width="45%"> <img src="resources/ss-2.jpg" alt="Checkout Screenshot" width="45%">
+
 ## About The Project
 
 This was the first project I created after completing the [SuperSimpleDev JavaScript course](https://youtu.be/EerdGm-ehJQ?si=R0WpX0iO95oGE8FC). The primary goal was to apply my newfound knowledge of JavaScript to build a functional, albeit basic, e-commerce experience.
 
 The front-end UI and styling were provided by the course, and I wrote the JavaScript code to bring the website to life. This includes features like displaying products, adding items to a cart, and managing the checkout process.
-
-Building this project was a fantastic learning experience and a moment of great satisfaction, as it was the first time I could see my code power a complete (simple) web application.
 
 ## Features
 
