@@ -8,7 +8,9 @@ This project is a simplified clone of the Amazon e-commerce website, built as my
 
 ## Screenshots
 
-<img src="resources/ss-1.jpg" alt="Homepage Screenshot" width="45%"> <img src="resources/ss-2.jpg" alt="Checkout Screenshot" width="45%">
+![Homepage Screenshot](resources/ss-1.jpg)
+
+![Checkout Screenshot](resources/ss-2.jpg)
 
 ## About The Project
 
